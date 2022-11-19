@@ -19,6 +19,7 @@ package com.logsniffer.model.file;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -39,7 +40,7 @@ public class WildcardLogSourceTest {
 
 	@Test
 	public void testLogsResolving() throws IOException {
-		File tmp = File.createTempFile("sdkj", "jk");
+		File tmp = Files.createTempFile("sdkj", "jk").toFile();
 		tmp.deleteOnExit();
 		File tmpFolder1 = new File(tmp.getPath() + "d", "f1");
 		tmpFolder1.mkdirs();

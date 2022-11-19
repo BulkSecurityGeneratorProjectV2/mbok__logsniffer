@@ -19,6 +19,7 @@ package com.logsniffer.model.support;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
 import junit.framework.Assert;
 
@@ -109,7 +110,7 @@ public class LineInputStreamTest {
 	 */
 	public static File writeString2Tmp(final String text, final String charset)
 			throws IOException {
-		File tmp = File.createTempFile("test", "txt");
+		File tmp = Files.createTempFile("test", "txt").toFile();
 		tmp.deleteOnExit();
 		FileUtils.writeStringToFile(tmp, text, charset);
 		return tmp;

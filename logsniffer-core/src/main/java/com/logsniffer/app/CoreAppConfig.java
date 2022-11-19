@@ -19,6 +19,7 @@ package com.logsniffer.app;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Properties;
 
 import org.apache.commons.lang.ArrayUtils;
@@ -87,7 +88,7 @@ public class CoreAppConfig {
 	@Autowired
 	public PropertiesFactoryBean logSnifferProperties(final ApplicationContext ctx) throws IOException {
 		if (ctx.getEnvironment().acceptsProfiles("!" + ContextProvider.PROFILE_NONE_QA)) {
-			final File qaFile = File.createTempFile("logsniffer", "qa");
+			final File qaFile = Files.createTempFile("logsniffer", "qa").toFile();
 			qaFile.delete();
 			final String qaHomeDir = qaFile.getPath();
 			logger.info("QA mode active, setting random home directory: {}", qaHomeDir);

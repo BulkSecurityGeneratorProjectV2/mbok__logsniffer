@@ -22,6 +22,7 @@ import static junit.framework.Assert.assertEquals;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
@@ -38,7 +39,7 @@ import com.logsniffer.model.support.ByteLogInputStream;
 public class FileLogTest {
 	@Test
 	public void testReadInt() throws IOException {
-		File openFile = File.createTempFile("test", "txt");
+		File openFile = Files.createTempFile("test", "txt").toFile();
 		openFile.deleteOnExit();
 		FileOutputStream out = new FileOutputStream(openFile);
 		FileLog flog = new FileLog(openFile);
@@ -67,7 +68,7 @@ public class FileLogTest {
 
 	@Test
 	public void testReadArray() throws IOException {
-		File openFile = File.createTempFile("test", "txt");
+		File openFile = Files.createTempFile("test", "txt").toFile();
 		openFile.deleteOnExit();
 		FileOutputStream out = new FileOutputStream(openFile);
 		FileLog flog = new FileLog(openFile);
